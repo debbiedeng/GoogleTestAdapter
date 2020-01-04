@@ -37,10 +37,10 @@ namespace GoogleTestAdapter
             //VerifyExecutableIsTrusted(TestResources.Tests_DebugX64);
             //VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX64);
             VerifyExecutableIsTrusted(TestResources.Tests_DebugX86_Gtest170);
-            VerifyExecutableIsTrusted(TestResources.CrashingTests_ReleaseX86);
+            //VerifyExecutableIsTrusted(TestResources.CrashingTests_ReleaseX86);
             VerifyExecutableIsTrusted(TestResources.CrashingTests_DebugX86);
-            VerifyExecutableIsTrusted(TestResources.CrashingTests_ReleaseX64);
-            VerifyExecutableIsTrusted(TestResources.CrashingTests_DebugX64);
+            //VerifyExecutableIsTrusted(TestResources.CrashingTests_ReleaseX64);
+            //VerifyExecutableIsTrusted(TestResources.CrashingTests_DebugX64);
             VerifyExecutableIsTrusted(TestResources.AlwaysCrashingExe);
             VerifyExecutableIsTrusted(TestResources.AlwaysFailingExe);
         }
@@ -72,43 +72,43 @@ namespace GoogleTestAdapter
             MockLogger.Verify(l => l.LogError(It.Is<string>(s => s.Contains("'d[ddd['"))), Times.Exactly(1));
         }
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void IsGoogleTestExecutable_WithIndicatorFile_IsRecognizedAsTestExecutable()
-        {
-            string testExecutable = SetupIndicatorFileTest(true);
-            try
-            {
-                bool result = GoogleTestDiscoverer
-                    .IsGoogleTestExecutable(testExecutable, "", TestEnvironment.Logger);
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void IsGoogleTestExecutable_WithIndicatorFile_IsRecognizedAsTestExecutable()
+        //{
+        //    string testExecutable = SetupIndicatorFileTest(true);
+        //    try
+        //    {
+        //        bool result = GoogleTestDiscoverer
+        //            .IsGoogleTestExecutable(testExecutable, "", TestEnvironment.Logger);
 
-                result.Should().BeTrue();
-            }
-            finally
-            {
-                string errorMessage;
-                Utils.DeleteDirectory(Path.GetDirectoryName(testExecutable), out errorMessage).Should().BeTrue();
-            }
-        }
+        //        result.Should().BeTrue();
+        //    }
+        //    finally
+        //    {
+        //        string errorMessage;
+        //        Utils.DeleteDirectory(Path.GetDirectoryName(testExecutable), out errorMessage).Should().BeTrue();
+        //    }
+        //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void IsGoogleTestExecutable_WithoutIndicatorFile_IsRecognizedAsTestExecutable()
-        {
-            string testExecutable = SetupIndicatorFileTest(false);
-            try
-            {
-                bool result = GoogleTestDiscoverer
-                    .IsGoogleTestExecutable(testExecutable, "", TestEnvironment.Logger);
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void IsGoogleTestExecutable_WithoutIndicatorFile_IsRecognizedAsTestExecutable()
+        //{
+        //    string testExecutable = SetupIndicatorFileTest(false);
+        //    try
+        //    {
+        //        bool result = GoogleTestDiscoverer
+        //            .IsGoogleTestExecutable(testExecutable, "", TestEnvironment.Logger);
 
-                result.Should().BeTrue();
-            }
-            finally
-            {
-                string errorMessage;
-                Utils.DeleteDirectory(Path.GetDirectoryName(testExecutable), out errorMessage).Should().BeTrue();
-            }
-        }
+        //        result.Should().BeTrue();
+        //    }
+        //    finally
+        //    {
+        //        string errorMessage;
+        //        Utils.DeleteDirectory(Path.GetDirectoryName(testExecutable), out errorMessage).Should().BeTrue();
+        //    }
+        //}
 
         [TestMethod]
         [TestCategory(Unit)]
@@ -189,61 +189,61 @@ namespace GoogleTestAdapter
             FindTests(TestResources.Tests_DebugX86_Gtest170, TestResources.NrOfGtest170CompatibleTests);
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_ExternallyLinkedX86Executable_FindsTestsWithLocation()
-        {
-            FindExternallyLinkedTests(TestResources.DllTests_ReleaseX86);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_ExternallyLinkedX86Executable_FindsTestsWithLocation()
+        //{
+        //    FindExternallyLinkedTests(TestResources.DllTests_ReleaseX86);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_WithPathExtension_FindsTestsWithLocation()
-        {
-            string baseDir = TestDataCreator.PreparePathExtensionTest();
-            try
-            {
-                string targetExe = Path.Combine(baseDir, "exe", Path.GetFileName(TestResources.DllTests_ReleaseX86));
-                MockOptions.Setup(o => o.PathExtension).Returns(PlaceholderReplacer.ExecutableDirPlaceholder + @"\..\dll");
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_WithPathExtension_FindsTestsWithLocation()
+        //{
+        //    string baseDir = TestDataCreator.PreparePathExtensionTest();
+        //    try
+        //    {
+        //        string targetExe = Path.Combine(baseDir, "exe", Path.GetFileName(TestResources.DllTests_ReleaseX86));
+        //        MockOptions.Setup(o => o.PathExtension).Returns(PlaceholderReplacer.ExecutableDirPlaceholder + @"\..\dll");
 
-                var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
-                IList<TestCase> testCases = discoverer.GetTestsFromExecutable(targetExe);
+        //        var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
+        //        IList<TestCase> testCases = discoverer.GetTestsFromExecutable(targetExe);
 
-                testCases.Should().HaveCount(TestResources.NrOfDllTests);
-            }
-            finally
-            {
-                Utils.DeleteDirectory(baseDir).Should().BeTrue();
-            }
-        }
+        //        testCases.Should().HaveCount(TestResources.NrOfDllTests);
+        //    }
+        //    finally
+        //    {
+        //        Utils.DeleteDirectory(baseDir).Should().BeTrue();
+        //    }
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_WithoutPathExtension_ProducesWarning()
-        {
-            string baseDir = TestDataCreator.PreparePathExtensionTest();
-            try
-            {
-                string targetExe = TestDataCreator.GetPathExtensionExecutable(baseDir);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_WithoutPathExtension_ProducesWarning()
+        //{
+        //    string baseDir = TestDataCreator.PreparePathExtensionTest();
+        //    try
+        //    {
+        //        string targetExe = TestDataCreator.GetPathExtensionExecutable(baseDir);
 
-                var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
-                IList<TestCase> testCases = discoverer.GetTestsFromExecutable(targetExe);
+        //        var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
+        //        IList<TestCase> testCases = discoverer.GetTestsFromExecutable(targetExe);
 
-                testCases.Should().BeEmpty();
-                MockLogger.Verify(l => l.LogError(It.Is<string>(s => s.StartsWith("Could not list test cases of executable"))));
-            }
-            finally
-            {
-                Utils.DeleteDirectory(baseDir).Should().BeTrue();
-            }
-        }
+        //        testCases.Should().BeEmpty();
+        //        MockLogger.Verify(l => l.LogError(It.Is<string>(s => s.StartsWith("Could not list test cases of executable"))));
+        //    }
+        //    finally
+        //    {
+        //        Utils.DeleteDirectory(baseDir).Should().BeTrue();
+        //    }
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_ExternallyLinkedX64Executable_FindsTestsWithLocation()
-        {
-            FindExternallyLinkedTests(TestResources.DllTests_ReleaseX64);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_ExternallyLinkedX64Executable_FindsTestsWithLocation()
+        //{
+        //    FindExternallyLinkedTests(TestResources.DllTests_ReleaseX64);
+        //}
 
         [TestMethod]
         [TestCategory(Integration)]
@@ -350,21 +350,21 @@ namespace GoogleTestAdapter
             }
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_LoadTests_AllTestsAreFound()
-        {
-            var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
-            IList<TestCase> testCases = discoverer.GetTestsFromExecutable(TestResources.LoadTests_ReleaseX86);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_LoadTests_AllTestsAreFound()
+        //{
+        //    var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
+        //    IList<TestCase> testCases = discoverer.GetTestsFromExecutable(TestResources.LoadTests_ReleaseX86);
 
-            testCases.Should().HaveCount(5000);
-            for (int i = 0; i < 5000; i++)
-            {
-                string fullyQualifiedName = $"LoadTests.Test/{i}";
-                bool contains = testCases.Any(tc => tc.FullyQualifiedName == fullyQualifiedName);
-                contains.Should().BeTrue($" Test not found: {fullyQualifiedName}");
-            }
-        }
+        //    testCases.Should().HaveCount(5000);
+        //    for (int i = 0; i < 5000; i++)
+        //    {
+        //        string fullyQualifiedName = $"LoadTests.Test/{i}";
+        //        bool contains = testCases.Any(tc => tc.FullyQualifiedName == fullyQualifiedName);
+        //        contains.Should().BeTrue($" Test not found: {fullyQualifiedName}");
+        //    }
+        //}
 
         //[TestMethod]
         //[TestCategory(Integration)]
@@ -495,15 +495,15 @@ namespace GoogleTestAdapter
             testCase.DisplayName.Should().MatchRegex(displayNameRegex.ToString());
         }
 
-        private string SetupIndicatorFileTest(bool withIndicatorFile)
-        {
-            string dir = Utils.GetTempDirectory();
-            string targetFile = Path.Combine(dir, "SomeWeirdName.exe");
-            File.Copy(TestResources.LoadTests_ReleaseX86, targetFile);
-            if (withIndicatorFile)
-                File.Create(targetFile + GoogleTestDiscoverer.GoogleTestIndicator).Dispose();
-            return targetFile;
-        }
+        //private string SetupIndicatorFileTest(bool withIndicatorFile)
+        //{
+        //    string dir = Utils.GetTempDirectory();
+        //    string targetFile = Path.Combine(dir, "SomeWeirdName.exe");
+        //    File.Copy(TestResources.LoadTests_ReleaseX86, targetFile);
+        //    if (withIndicatorFile)
+        //        File.Create(targetFile + GoogleTestDiscoverer.GoogleTestIndicator).Dispose();
+        //    return targetFile;
+        //}
 
     }
 

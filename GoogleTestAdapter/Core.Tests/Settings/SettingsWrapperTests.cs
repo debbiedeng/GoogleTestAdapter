@@ -290,19 +290,19 @@ namespace GoogleTestAdapter.Settings
             }
         }
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void GetPathExtension__PlatformAndConfigurationNamePlaceholdersAreReplaced()
-        {
-            MockXmlOptions.Setup(o => o.PlatformName).Returns("Debug");
-            MockXmlOptions.Setup(o => o.ConfigurationName).Returns("x86");
-            MockXmlOptions.Setup(o => o.PathExtension).Returns(
-                $"P:{PlaceholderReplacer.PlatformNamePlaceholder}, C:{PlaceholderReplacer.ConfigurationNamePlaceholder}");
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void GetPathExtension__PlatformAndConfigurationNamePlaceholdersAreReplaced()
+        //{
+        //    MockXmlOptions.Setup(o => o.PlatformName).Returns("Debug");
+        //    MockXmlOptions.Setup(o => o.ConfigurationName).Returns("x86");
+        //    MockXmlOptions.Setup(o => o.PathExtension).Returns(
+        //        $"P:{PlaceholderReplacer.PlatformNamePlaceholder}, C:{PlaceholderReplacer.ConfigurationNamePlaceholder}");
 
-            string result = TheOptions.GetPathExtension(TestResources.LoadTests_ReleaseX86);
+        //    string result = TheOptions.GetPathExtension(TestResources.LoadTests_ReleaseX86);
 
-            result.Should().Be("P:Debug, C:x86");
-        }
+        //    result.Should().Be("P:Debug, C:x86");
+        //}
 
         [TestMethod]
         [TestCategory(Unit)]

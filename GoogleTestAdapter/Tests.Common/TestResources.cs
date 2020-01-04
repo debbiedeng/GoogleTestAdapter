@@ -45,27 +45,27 @@ namespace GoogleTestAdapter.Tests.Common
         public const int NrOfFailingTests = 55;
         public const int NrOfGtest170CompatibleTests = 104;
 
-        public static readonly string LoadTests_ReleaseX86 = Path.Combine(SampleTestsBuildDir, @"Release\LoadTests_gta.exe");
+        //public static readonly string LoadTests_ReleaseX86 = Path.Combine(SampleTestsBuildDir, @"Release\LoadTests_gta.exe");
         public const string LoadTests_Generated = TestdataDir + @"LoadTests\GeneratedLoadTests_gta.exe";
 
-        public static readonly string LongRunningTests_ReleaseX86 = Path.Combine(SampleTestsBuildDir, @"Release\LongRunningTests_gta.exe");
+        //public static readonly string LongRunningTests_ReleaseX86 = Path.Combine(SampleTestsBuildDir, @"Release\LongRunningTests_gta.exe");
 
         public const string CrashingTests_DebugX86 = SampleTestsBuildDir + @"Debug\CrashingTests_gta.exe";
-        public const string CrashingTests_ReleaseX86 = SampleTestsBuildDir + @"Release\CrashingTests_gta.exe";
-        public const string CrashingTests_DebugX64 = SampleTestsBuildDir + @"Debug-x64\CrashingTests_gta.exe";
-        public const string CrashingTests_ReleaseX64 = SampleTestsBuildDir + @"Release-x64\CrashingTests_gta.exe";
+        //public const string CrashingTests_ReleaseX86 = SampleTestsBuildDir + @"Release\CrashingTests_gta.exe";
+        //public const string CrashingTests_DebugX64 = SampleTestsBuildDir + @"Debug-x64\CrashingTests_gta.exe";
+        //public const string CrashingTests_ReleaseX64 = SampleTestsBuildDir + @"Release-x64\CrashingTests_gta.exe";
 
-        public const string DllTests_ReleaseX86 = SampleTestsBuildDir + @"Release\DllTests_gta.exe";
-        public const string DllTestsDll_ReleaseX86 = SampleTestsBuildDir + @"Release\DllProject.dll";
-        public const string DllTests_ReleaseX64 = SampleTestsBuildDir + @"Release-x64\DllTests_gta.exe";
-        public const string DllTestsDll_ReleaseX64 = SampleTestsBuildDir + @"Release-x64\DllProject.dll";
+        //public const string DllTests_ReleaseX86 = SampleTestsBuildDir + @"Release\DllTests_gta.exe";
+        //public const string DllTestsDll_ReleaseX86 = SampleTestsBuildDir + @"Release\DllProject.dll";
+        //public const string DllTests_ReleaseX64 = SampleTestsBuildDir + @"Release-x64\DllTests_gta.exe";
+        //public const string DllTestsDll_ReleaseX64 = SampleTestsBuildDir + @"Release-x64\DllProject.dll";
         public const int NrOfDllTests = 2;
 
         public const string LeakCheckTests_DebugX86 = SampleTestsBuildDir + @"Debug\LeakCheckTests_gta.exe";
-        public const string LeakCheckTests_ReleaseX86 = SampleTestsBuildDir + @"Release\LeakCheckTests_gta.exe";
+        //public const string LeakCheckTests_ReleaseX86 = SampleTestsBuildDir + @"Release\LeakCheckTests_gta.exe";
 
         public const string HelperFileTests_DebugX86 = SampleTestsBuildDir + @"Debug\HelperFileTests_gta.exe";
-        public const string HelperFilesTests_ReleaseX86 = SampleTestsBuildDir + @"Release\HelperFileTests_gta.exe";
+        //public const string HelperFilesTests_ReleaseX86 = SampleTestsBuildDir + @"Release\HelperFileTests_gta.exe";
 
         public const string SucceedingBatch = @"Tests\Returns0.bat";
         public const string FailingBatch = @"Tests\Returns1.bat";

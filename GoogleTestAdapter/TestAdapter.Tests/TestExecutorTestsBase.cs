@@ -119,22 +119,22 @@ namespace GoogleTestAdapter.TestAdapter
             RunExitCodeTest("TestMath.AddPasses", VsTestOutcome.Passed);
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_ExternallyLinkedX86Tests_CorrectTestResults()
-        {
-            RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_ExternallyLinkedX86Tests_CorrectTestResults()
+        //{
+        //    RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_ExternallyLinkedX86TestsInDebugMode_CorrectTestResults()
-        {
-            // for at least having the debug messaging code executed once
-            MockOptions.Setup(o => o.OutputMode).Returns(OutputMode.Verbose);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_ExternallyLinkedX86TestsInDebugMode_CorrectTestResults()
+        //{
+        //    // for at least having the debug messaging code executed once
+        //    MockOptions.Setup(o => o.OutputMode).Returns(OutputMode.Verbose);
 
-            RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
-        }
+        //    RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
+        //}
 
         [TestMethod]
         [TestCategory(Integration)]
@@ -146,12 +146,12 @@ namespace GoogleTestAdapter.TestAdapter
             RunAndVerifyTests(TestResources.Tests_DebugX86, TestResources.NrOfPassingTests, TestResources.NrOfFailingTests, 0);
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_ExternallyLinkedX64_CorrectTestResults()
-        {
-            RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_ExternallyLinkedX64_CorrectTestResults()
+        //{
+        //    RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
+        //}
 
         //[TestMethod]
         //[TestCategory(Integration)]
@@ -190,122 +190,122 @@ namespace GoogleTestAdapter.TestAdapter
             CheckMockInvocations(1, 2, 0, 3, 0);
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_WithSetupAndTeardownBatchesWhereTeardownFails_LogsWarning()
-        {
-            MockOptions.Setup(o => o.BatchForTestSetup).Returns($"$(SolutionDir){TestResources.SucceedingBatch}");
-            MockOptions.Setup(o => o.BatchForTestTeardown).Returns($"$(SolutionDir){TestResources.FailingBatch}");
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_WithSetupAndTeardownBatchesWhereTeardownFails_LogsWarning()
+        //{
+        //    MockOptions.Setup(o => o.BatchForTestSetup).Returns($"$(SolutionDir){TestResources.SucceedingBatch}");
+        //    MockOptions.Setup(o => o.BatchForTestTeardown).Returns($"$(SolutionDir){TestResources.FailingBatch}");
 
-            RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
+        //    RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
 
-            MockLogger.Verify(l => l.LogWarning(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup))),
-                Times.Never);
-            MockLogger.Verify(l => l.LogWarning(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestTeardown))),
-                Times.AtLeastOnce());
-        }
+        //    MockLogger.Verify(l => l.LogWarning(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup))),
+        //        Times.Never);
+        //    MockLogger.Verify(l => l.LogWarning(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestTeardown))),
+        //        Times.AtLeastOnce());
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_WithSetupAndTeardownBatchesWhereSetupFails_LogsWarning()
-        {
-            MockOptions.Setup(o => o.BatchForTestSetup).Returns($"$(SolutionDir){TestResources.FailingBatch}");
-            MockOptions.Setup(o => o.BatchForTestTeardown).Returns($"$(SolutionDir){TestResources.SucceedingBatch}");
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_WithSetupAndTeardownBatchesWhereSetupFails_LogsWarning()
+        //{
+        //    MockOptions.Setup(o => o.BatchForTestSetup).Returns($"$(SolutionDir){TestResources.FailingBatch}");
+        //    MockOptions.Setup(o => o.BatchForTestTeardown).Returns($"$(SolutionDir){TestResources.SucceedingBatch}");
 
-            RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
+        //    RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
 
-            MockLogger.Verify(l => l.LogWarning(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup))),
-                Times.AtLeastOnce());
-            MockLogger.Verify(l => l.LogWarning(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestTeardown))),
-                Times.Never);
-        }
+        //    MockLogger.Verify(l => l.LogWarning(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup))),
+        //        Times.AtLeastOnce());
+        //    MockLogger.Verify(l => l.LogWarning(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestTeardown))),
+        //        Times.Never);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_WithoutBatches_NoLogging()
-        {
-            RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_WithoutBatches_NoLogging()
+        //{
+        //    RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
 
-            MockLogger.Verify(l => l.LogInfo(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup))),
-                Times.Never);
-            MockLogger.Verify(l => l.LogWarning(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup))),
-                Times.Never);
-            MockLogger.Verify(l => l.LogError(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup))),
-                Times.Never);
-            MockLogger.Verify(l => l.LogInfo(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestTeardown))),
-                Times.Never);
-            MockLogger.Verify(l => l.LogWarning(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestTeardown))),
-                Times.Never);
-            MockLogger.Verify(l => l.LogError(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestTeardown))),
-                Times.Never);
-        }
+        //    MockLogger.Verify(l => l.LogInfo(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup))),
+        //        Times.Never);
+        //    MockLogger.Verify(l => l.LogWarning(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup))),
+        //        Times.Never);
+        //    MockLogger.Verify(l => l.LogError(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup))),
+        //        Times.Never);
+        //    MockLogger.Verify(l => l.LogInfo(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestTeardown))),
+        //        Times.Never);
+        //    MockLogger.Verify(l => l.LogWarning(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestTeardown))),
+        //        Times.Never);
+        //    MockLogger.Verify(l => l.LogError(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestTeardown))),
+        //        Times.Never);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_WithNonexistingSetupBatch_LogsError()
-        {
-            MockOptions.Setup(o => o.BatchForTestSetup).Returns("some_nonexisting_file");
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_WithNonexistingSetupBatch_LogsError()
+        //{
+        //    MockOptions.Setup(o => o.BatchForTestSetup).Returns("some_nonexisting_file");
 
-            RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0, checkNoErrorsLogged: false);
+        //    RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0, checkNoErrorsLogged: false);
 
-            MockLogger.Verify(l => l.LogError(
-                It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup.ToLower()))),
-                Times.AtLeastOnce());
-        }
+        //    MockLogger.Verify(l => l.LogError(
+        //        It.Is<string>(s => s.Contains(PreparingTestRunner.TestSetup.ToLower()))),
+        //        Times.AtLeastOnce());
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_WithPathExtension_ExecutionOk()
-        {
-            string baseDir = TestDataCreator.PreparePathExtensionTest();
-            try
-            {
-                string targetExe = TestDataCreator.GetPathExtensionExecutable(baseDir);
-                MockOptions.Setup(o => o.PathExtension).Returns(PlaceholderReplacer.ExecutableDirPlaceholder + @"\..\dll");
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_WithPathExtension_ExecutionOk()
+        //{
+        //    string baseDir = TestDataCreator.PreparePathExtensionTest();
+        //    try
+        //    {
+        //        string targetExe = TestDataCreator.GetPathExtensionExecutable(baseDir);
+        //        MockOptions.Setup(o => o.PathExtension).Returns(PlaceholderReplacer.ExecutableDirPlaceholder + @"\..\dll");
 
-                var executor = new TestExecutor(TestEnvironment.Logger, TestEnvironment.Options, MockDebuggerAttacher.Object);
-                executor.RunTests(targetExe.Yield(), MockRunContext.Object, MockFrameworkHandle.Object);
+        //        var executor = new TestExecutor(TestEnvironment.Logger, TestEnvironment.Options, MockDebuggerAttacher.Object);
+        //        executor.RunTests(targetExe.Yield(), MockRunContext.Object, MockFrameworkHandle.Object);
 
-                MockFrameworkHandle.Verify(h => h.RecordResult(It.Is<VsTestResult>(tr => tr.Outcome == VsTestOutcome.Passed)), Times.Once);
-                MockFrameworkHandle.Verify(h => h.RecordResult(It.Is<VsTestResult>(tr => tr.Outcome == VsTestOutcome.Failed)), Times.Once);
-                MockLogger.Verify(l => l.LogError(It.IsAny<string>()), Times.Never);
-            }
-            finally
-            {
-                Utils.DeleteDirectory(baseDir).Should().BeTrue();
-            }
-        }
+        //        MockFrameworkHandle.Verify(h => h.RecordResult(It.Is<VsTestResult>(tr => tr.Outcome == VsTestOutcome.Passed)), Times.Once);
+        //        MockFrameworkHandle.Verify(h => h.RecordResult(It.Is<VsTestResult>(tr => tr.Outcome == VsTestOutcome.Failed)), Times.Once);
+        //        MockLogger.Verify(l => l.LogError(It.IsAny<string>()), Times.Never);
+        //    }
+        //    finally
+        //    {
+        //        Utils.DeleteDirectory(baseDir).Should().BeTrue();
+        //    }
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_WithoutPathExtension_ExecutionFails()
-        {
-            string baseDir = TestDataCreator.PreparePathExtensionTest();
-            try
-            {
-                string targetExe = TestDataCreator.GetPathExtensionExecutable(baseDir);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_WithoutPathExtension_ExecutionFails()
+        //{
+        //    string baseDir = TestDataCreator.PreparePathExtensionTest();
+        //    try
+        //    {
+        //        string targetExe = TestDataCreator.GetPathExtensionExecutable(baseDir);
 
-                var executor = new TestExecutor(TestEnvironment.Logger, TestEnvironment.Options, MockDebuggerAttacher.Object);
-                executor.RunTests(targetExe.Yield(), MockRunContext.Object, MockFrameworkHandle.Object);
+        //        var executor = new TestExecutor(TestEnvironment.Logger, TestEnvironment.Options, MockDebuggerAttacher.Object);
+        //        executor.RunTests(targetExe.Yield(), MockRunContext.Object, MockFrameworkHandle.Object);
 
-                MockFrameworkHandle.Verify(h => h.RecordResult(It.IsAny<VsTestResult>()), Times.Never);
-                MockLogger.Verify(l => l.LogError(It.IsAny<string>()), Times.Once);
-            }
-            finally
-            {
-                Utils.DeleteDirectory(baseDir).Should().BeTrue();
-            }
-        }
+        //        MockFrameworkHandle.Verify(h => h.RecordResult(It.IsAny<VsTestResult>()), Times.Never);
+        //        MockLogger.Verify(l => l.LogError(It.IsAny<string>()), Times.Once);
+        //    }
+        //    finally
+        //    {
+        //        Utils.DeleteDirectory(baseDir).Should().BeTrue();
+        //    }
+        //}
         
         protected void RunAndVerifyTests(string executable, int nrOfPassedTests, int nrOfFailedTests, int nrOfUnexecutedTests, int nrOfSkippedTests = 0, int nrOfNotFoundTests = 0, bool checkNoErrorsLogged = true)
         {
@@ -393,16 +393,16 @@ namespace GoogleTestAdapter.TestAdapter
             Assert.Fail("Memory leak problem has been fixed :-) - enable test!");
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void MemoryLeakTests_PassingWithoutLeaksRelease_CorrectResult()
-        {
-            bool outputAvailable = MockOptions.Object.DebuggerKind > DebuggerKind.VsTestFramework ||
-                                   !MockRunContext.Object.IsBeingDebugged;
-            RunMemoryLeakTest(TestResources.LeakCheckTests_ReleaseX86, "memory_leaks.passing_and_leaking", VsTestOutcome.Passed, 
-                outputAvailable ? VsTestOutcome.Skipped : VsTestOutcome.Passed,
-                msg => !outputAvailable || msg.Contains("Memory leak detection is only performed if compiled with Debug configuration."));
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void MemoryLeakTests_PassingWithoutLeaksRelease_CorrectResult()
+        //{
+        //    bool outputAvailable = MockOptions.Object.DebuggerKind > DebuggerKind.VsTestFramework ||
+        //                           !MockRunContext.Object.IsBeingDebugged;
+        //    RunMemoryLeakTest(TestResources.LeakCheckTests_ReleaseX86, "memory_leaks.passing_and_leaking", VsTestOutcome.Passed, 
+        //        outputAvailable ? VsTestOutcome.Skipped : VsTestOutcome.Passed,
+        //        msg => !outputAvailable || msg.Contains("Memory leak detection is only performed if compiled with Debug configuration."));
+        //}
 
         protected void RunMemoryLeakTest(string executable, string testCaseName, VsTestOutcome testOutcome, VsTestOutcome leakCheckOutcome, Func<string, bool> errorMessagePredicate)
         {

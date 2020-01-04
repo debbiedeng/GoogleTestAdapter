@@ -18,25 +18,25 @@ namespace GoogleTestAdapter.Runners
     public class SequentialTestRunnerTests : TestsBase
     {
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void RunTests_CancelingDuringTestExecution_StopsTestExecution()
-        {
-            DoRunCancelingTests(
-                false, 
-                2000,  // 1st test should be executed
-                3000); // 2nd test should not be executed 
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void RunTests_CancelingDuringTestExecution_StopsTestExecution()
+        //{
+        //    DoRunCancelingTests(
+        //        false, 
+        //        2000,  // 1st test should be executed
+        //        3000); // 2nd test should not be executed 
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void RunTests_CancelingAndKillingProcessesDuringTestExecution_StopsTestExecutionFaster()
-        {
-            DoRunCancelingTests(
-                true,
-                1000,  // 1st test should be canceled
-                2000); // 2nd test should not be executed 
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void RunTests_CancelingAndKillingProcessesDuringTestExecution_StopsTestExecutionFaster()
+        //{
+        //    DoRunCancelingTests(
+        //        true,
+        //        1000,  // 1st test should be canceled
+        //        2000); // 2nd test should not be executed 
+        //}
 
         [TestMethod]
         [TestCategory(Integration)]

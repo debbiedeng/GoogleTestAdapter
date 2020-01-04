@@ -51,60 +51,60 @@ namespace GoogleTestAdapter.TestCases
             CreateTestCases_DiscoveryTimeoutIsExceeded_DiscoveryIsCanceledAndCancellationIsLogged();
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void CreateTestCases_OldExeWithAdditionalPdb_TestCasesAreFound()
-        {
-            MockOptions.Setup(o => o.DebuggerKind).Returns(DebuggerKind.VsTestFramework);
-            CheckIfSourceLocationsAreFound();
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void CreateTestCases_OldExeWithAdditionalPdb_TestCasesAreFound()
+        //{
+        //    MockOptions.Setup(o => o.DebuggerKind).Returns(DebuggerKind.VsTestFramework);
+        //    CheckIfSourceLocationsAreFound();
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void CreateTestCases_NewExeWithAdditionalPdb_TestCasesAreFound()
-        {
-            CheckIfSourceLocationsAreFound();
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void CreateTestCases_NewExeWithAdditionalPdb_TestCasesAreFound()
+        //{
+        //    CheckIfSourceLocationsAreFound();
+        //}
 
-        [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
-        private void CheckIfSourceLocationsAreFound()
-        { 
-            string executable = TestResources.LoadTests_ReleaseX86;
+        //[SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
+        //private void CheckIfSourceLocationsAreFound()
+        //{ 
+        //    string executable = TestResources.LoadTests_ReleaseX86;
 
-            executable.AsFileInfo().Should().Exist();
-            string pdb = Path.ChangeExtension(executable, ".pdb");
-            pdb.AsFileInfo().Should().Exist();
-            string renamedPdb = $"{pdb}.bak";
-            renamedPdb.AsFileInfo().Should().NotExist();
+        //    executable.AsFileInfo().Should().Exist();
+        //    string pdb = Path.ChangeExtension(executable, ".pdb");
+        //    pdb.AsFileInfo().Should().Exist();
+        //    string renamedPdb = $"{pdb}.bak";
+        //    renamedPdb.AsFileInfo().Should().NotExist();
 
-            try
-            {
-                File.Move(pdb, renamedPdb);
-                pdb.AsFileInfo().Should().NotExist();
+        //    try
+        //    {
+        //        File.Move(pdb, renamedPdb);
+        //        pdb.AsFileInfo().Should().NotExist();
 
-                var reportedTestCases = new List<TestCase>();
-                var diaResolverFactory = new DefaultDiaResolverFactory();
-                var factory = new TestCaseFactory(executable, MockLogger.Object, TestEnvironment.Options, diaResolverFactory, _processExecutorFactory);
-                var returnedTestCases = factory.CreateTestCases(testCase => reportedTestCases.Add(testCase));
+        //        var reportedTestCases = new List<TestCase>();
+        //        var diaResolverFactory = new DefaultDiaResolverFactory();
+        //        var factory = new TestCaseFactory(executable, MockLogger.Object, TestEnvironment.Options, diaResolverFactory, _processExecutorFactory);
+        //        var returnedTestCases = factory.CreateTestCases(testCase => reportedTestCases.Add(testCase));
 
-                returnedTestCases.Should().OnlyContain(tc => !HasSourceLocation(tc));
-                reportedTestCases.Should().OnlyContain(tc => !HasSourceLocation(tc));
+        //        returnedTestCases.Should().OnlyContain(tc => !HasSourceLocation(tc));
+        //        reportedTestCases.Should().OnlyContain(tc => !HasSourceLocation(tc));
 
-                reportedTestCases.Clear();
-                MockOptions.Setup(o => o.AdditionalPdbs).Returns("$(ExecutableDir)\\*.pdb.bak");
-                MockOptions.Setup(o => o.TestDiscoveryTimeoutInSeconds).Returns(10000);
-                factory = new TestCaseFactory(executable, MockLogger.Object, TestEnvironment.Options, diaResolverFactory, _processExecutorFactory);
-                returnedTestCases = factory.CreateTestCases(testCase => reportedTestCases.Add(testCase));
+        //        reportedTestCases.Clear();
+        //        MockOptions.Setup(o => o.AdditionalPdbs).Returns("$(ExecutableDir)\\*.pdb.bak");
+        //        MockOptions.Setup(o => o.TestDiscoveryTimeoutInSeconds).Returns(10000);
+        //        factory = new TestCaseFactory(executable, MockLogger.Object, TestEnvironment.Options, diaResolverFactory, _processExecutorFactory);
+        //        returnedTestCases = factory.CreateTestCases(testCase => reportedTestCases.Add(testCase));
 
-                reportedTestCases.Should().OnlyContain(tc => HasSourceLocation(tc));
-                returnedTestCases.Should().OnlyContain(tc => HasSourceLocation(tc));
-            }
-            finally
-            {
-                File.Move(renamedPdb, pdb);
-                pdb.AsFileInfo().Should().Exist();
-            }
-        }
+        //        reportedTestCases.Should().OnlyContain(tc => HasSourceLocation(tc));
+        //        returnedTestCases.Should().OnlyContain(tc => HasSourceLocation(tc));
+        //    }
+        //    finally
+        //    {
+        //        File.Move(renamedPdb, pdb);
+        //        pdb.AsFileInfo().Should().Exist();
+        //    }
+        //}
 
         private bool HasSourceLocation(TestCase testCase)
         {

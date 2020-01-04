@@ -49,19 +49,19 @@ namespace GoogleTestAdapter.TestAdapter
         }
 
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_CancelingExecutor_StopsTestExecution()
-        {
-            DoRunCancelingTests(false, DurationOfEachLongRunningTestInMs);  // (only) 1st test should be executed
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_CancelingExecutor_StopsTestExecution()
+        //{
+        //    DoRunCancelingTests(false, DurationOfEachLongRunningTestInMs);  // (only) 1st test should be executed
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_CancelingExecutorAndKillProcesses_StopsTestExecutionFaster()
-        {
-            DoRunCancelingTests(true, WaitBeforeCancelInMs);  // 1st test should be actively canceled
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_CancelingExecutorAndKillProcesses_StopsTestExecutionFaster()
+        //{
+        //    DoRunCancelingTests(true, WaitBeforeCancelInMs);  // 1st test should be actively canceled
+        //}
 
         private void DoRunCancelingTests(bool killProcesses, int lower)
         {
@@ -102,11 +102,11 @@ namespace GoogleTestAdapter.TestAdapter
             base.RunTests_WorkingDir_IsSetCorrectly();
         }
 
-        [TestMethod]
-        public override void RunTests_ExternallyLinkedX86Tests_CorrectTestResults()
-        {
-            base.RunTests_ExternallyLinkedX86Tests_CorrectTestResults();
-        }
+        //[TestMethod]
+        //public override void RunTests_ExternallyLinkedX86Tests_CorrectTestResults()
+        //{
+        //    base.RunTests_ExternallyLinkedX86Tests_CorrectTestResults();
+        //}
 
         [TestMethod]
         public override void RunTests_StaticallyLinkedX86Tests_CorrectTestResults()
@@ -114,11 +114,11 @@ namespace GoogleTestAdapter.TestAdapter
             base.RunTests_StaticallyLinkedX86Tests_CorrectTestResults();
         }
 
-        [TestMethod]
-        public override void RunTests_ExternallyLinkedX64_CorrectTestResults()
-        {
-            base.RunTests_ExternallyLinkedX64_CorrectTestResults();
-        }
+        //[TestMethod]
+        //public override void RunTests_ExternallyLinkedX64_CorrectTestResults()
+        //{
+        //    base.RunTests_ExternallyLinkedX64_CorrectTestResults();
+        //}
 
         //[TestMethod]
         //public override void RunTests_StaticallyLinkedX64Tests_CorrectTestResults()
@@ -132,19 +132,19 @@ namespace GoogleTestAdapter.TestAdapter
         //    base.RunTests_StaticallyLinkedX64Tests_OutputIsPrintedAtMostOnce();
         //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_CrashingX64Tests_CorrectTestResults()
-        {
-            RunAndVerifyTests(TestResources.CrashingTests_ReleaseX64, 1, 2, 0, 3);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_CrashingX64Tests_CorrectTestResults()
+        //{
+        //    RunAndVerifyTests(TestResources.CrashingTests_ReleaseX64, 1, 2, 0, 3);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_CrashingX86Tests_CorrectTestResults()
-        {
-            RunAndVerifyTests(TestResources.CrashingTests_ReleaseX86, 1, 2, 0, 3);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_CrashingX86Tests_CorrectTestResults()
+        //{
+        //    RunAndVerifyTests(TestResources.CrashingTests_ReleaseX86, 1, 2, 0, 3);
+        //}
 
         [TestMethod]
         public override void RunTests_HardCrashingX86Tests_CorrectTestResults()
@@ -152,47 +152,47 @@ namespace GoogleTestAdapter.TestAdapter
             base.RunTests_HardCrashingX86Tests_CorrectTestResults();
         }
 
-        [TestMethod]
-        public override void RunTests_ExternallyLinkedX86TestsInDebugMode_CorrectTestResults()
-        {
-            base.RunTests_ExternallyLinkedX86TestsInDebugMode_CorrectTestResults();
-        }
+        //[TestMethod]
+        //public override void RunTests_ExternallyLinkedX86TestsInDebugMode_CorrectTestResults()
+        //{
+        //    base.RunTests_ExternallyLinkedX86TestsInDebugMode_CorrectTestResults();
+        //}
 
-        [TestMethod]
-        public override void RunTests_WithoutBatches_NoLogging()
-        {
-            base.RunTests_WithoutBatches_NoLogging();
-        }
+        //[TestMethod]
+        //public override void RunTests_WithoutBatches_NoLogging()
+        //{
+        //    base.RunTests_WithoutBatches_NoLogging();
+        //}
 
-        [TestMethod]
-        public override void RunTests_WithSetupAndTeardownBatchesWhereSetupFails_LogsWarning()
-        {
-            base.RunTests_WithSetupAndTeardownBatchesWhereSetupFails_LogsWarning();
-        }
+        //[TestMethod]
+        //public override void RunTests_WithSetupAndTeardownBatchesWhereSetupFails_LogsWarning()
+        //{
+        //    base.RunTests_WithSetupAndTeardownBatchesWhereSetupFails_LogsWarning();
+        //}
 
-        [TestMethod]
-        public override void RunTests_WithSetupAndTeardownBatchesWhereTeardownFails_LogsWarning()
-        {
-            base.RunTests_WithSetupAndTeardownBatchesWhereTeardownFails_LogsWarning();
-        }
+        //[TestMethod]
+        //public override void RunTests_WithSetupAndTeardownBatchesWhereTeardownFails_LogsWarning()
+        //{
+        //    base.RunTests_WithSetupAndTeardownBatchesWhereTeardownFails_LogsWarning();
+        //}
 
-        [TestMethod]
-        public override void RunTests_WithNonexistingSetupBatch_LogsError()
-        {
-            base.RunTests_WithNonexistingSetupBatch_LogsError();
-        }
+        //[TestMethod]
+        //public override void RunTests_WithNonexistingSetupBatch_LogsError()
+        //{
+        //    base.RunTests_WithNonexistingSetupBatch_LogsError();
+        //}
 
-        [TestMethod]
-        public override void RunTests_WithPathExtension_ExecutionOk()
-        {
-            base.RunTests_WithPathExtension_ExecutionOk();
-        }
+        //[TestMethod]
+        //public override void RunTests_WithPathExtension_ExecutionOk()
+        //{
+        //    base.RunTests_WithPathExtension_ExecutionOk();
+        //}
 
-        [TestMethod]
-        public override void RunTests_WithoutPathExtension_ExecutionFails()
-        {
-            base.RunTests_WithoutPathExtension_ExecutionFails();
-        }
+        //[TestMethod]
+        //public override void RunTests_WithoutPathExtension_ExecutionFails()
+        //{
+        //    base.RunTests_WithoutPathExtension_ExecutionFails();
+        //}
 
         [TestMethod]
         public override void RunTests_ExitCodeTest_PassingTestResultIsProduced()
@@ -218,11 +218,11 @@ namespace GoogleTestAdapter.TestAdapter
             base.MemoryLeakTests_PassingWithLeaks_CorrectResult();
         }
 
-        [TestMethod]
-        public override void MemoryLeakTests_PassingWithoutLeaksRelease_CorrectResult()
-        {
-            base.MemoryLeakTests_PassingWithoutLeaksRelease_CorrectResult();
-        }
+        //[TestMethod]
+        //public override void MemoryLeakTests_PassingWithoutLeaksRelease_CorrectResult()
+        //{
+        //    base.MemoryLeakTests_PassingWithoutLeaksRelease_CorrectResult();
+        //}
 
         [TestMethod]
         public override void MemoryLeakTests_PassingWithoutLeaks_CorrectResult()

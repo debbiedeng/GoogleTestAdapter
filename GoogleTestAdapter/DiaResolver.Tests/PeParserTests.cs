@@ -10,21 +10,21 @@ namespace GoogleTestAdapter.DiaResolver
     public class PeParserTests : TestsBase
     {
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void PeParser_X86ExternallyLinkedExe_CorrentNumberOfImports()
-        {
-            var imports = PeParser.ParseImports(TestResources.DllTests_ReleaseX86, MockLogger.Object);
-            imports.Should().HaveCount(14);
-        }
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void PeParser_X86ExternallyLinkedExe_CorrentNumberOfImports()
+        //{
+        //    var imports = PeParser.ParseImports(TestResources.DllTests_ReleaseX86, MockLogger.Object);
+        //    imports.Should().HaveCount(14);
+        //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void PeParser_X86ExternallyLinkedDll_CorrentNumberOfImports()
-        {
-            var imports = PeParser.ParseImports(TestResources.DllTestsDll_ReleaseX86, MockLogger.Object);
-            imports.Should().HaveCount(3);
-        }
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void PeParser_X86ExternallyLinkedDll_CorrentNumberOfImports()
+        //{
+        //    var imports = PeParser.ParseImports(TestResources.DllTestsDll_ReleaseX86, MockLogger.Object);
+        //    imports.Should().HaveCount(3);
+        //}
 
 
         //[TestMethod]
@@ -36,14 +36,14 @@ namespace GoogleTestAdapter.DiaResolver
         //    pdb.Should().Be(expectedPdb);
         //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void PeParser_X86StaticallyLinked_FindsEmbeddedPdbPath()
-        {
-            string pdb = PeParser.ExtractPdbPath(TestResources.LoadTests_ReleaseX86, MockLogger.Object);
-            string expectedPdb = Path.GetFullPath(Path.ChangeExtension(TestResources.LoadTests_ReleaseX86, ".pdb"));
-            pdb.Should().Be(expectedPdb);
-        }
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void PeParser_X86StaticallyLinked_FindsEmbeddedPdbPath()
+        //{
+        //    string pdb = PeParser.ExtractPdbPath(TestResources.LoadTests_ReleaseX86, MockLogger.Object);
+        //    string expectedPdb = Path.GetFullPath(Path.ChangeExtension(TestResources.LoadTests_ReleaseX86, ".pdb"));
+        //    pdb.Should().Be(expectedPdb);
+        //}
 
     }
 
