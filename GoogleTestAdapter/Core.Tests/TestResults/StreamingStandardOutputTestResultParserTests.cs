@@ -697,131 +697,131 @@ Expected: true
             CheckStandardOutputResultParser(cases, consoleOutput, results, parser.CrashedTestCase);
         }
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void OutputHandling_OutputManyLinesWithNewlines_IsParsedCorrectly()
-        {
-            var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
-            var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
-                .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void OutputHandling_OutputManyLinesWithNewlines_IsParsedCorrectly()
+        //{
+        //    var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
+        //    var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
+        //        .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
 
-            var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
-            consoleOutput.ToList().ForEach(parser.ReportLine);
-            parser.Flush();
-            var results = parser.TestResults;
+        //    var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
+        //    consoleOutput.ToList().ForEach(parser.ReportLine);
+        //    parser.Flush();
+        //    var results = parser.TestResults;
 
-            var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.Output_ManyLinesWithNewlines");
-            var expectedErrorMessage =
-                "before test 1\nbefore test 2\nExpected: 1\nTo be equal to: 2\ntest output\nafter test 1\nafter test 2";
-            testResult.ErrorMessage.Should().Be(expectedErrorMessage);
+        //    var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.Output_ManyLinesWithNewlines");
+        //    var expectedErrorMessage =
+        //        "before test 1\nbefore test 2\nExpected: 1\nTo be equal to: 2\ntest output\nafter test 1\nafter test 2";
+        //    testResult.ErrorMessage.Should().Be(expectedErrorMessage);
 
-            CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
-        }
+        //    CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
+        //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void OutputHandling_OutputOneLineWithNewlines_IsParsedCorrectly()
-        {
-            var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
-            var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
-                .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void OutputHandling_OutputOneLineWithNewlines_IsParsedCorrectly()
+        //{
+        //    var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
+        //    var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
+        //        .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
 
-            var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
-            consoleOutput.ToList().ForEach(parser.ReportLine);
-            parser.Flush();
-            var results = parser.TestResults;
+        //    var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
+        //    consoleOutput.ToList().ForEach(parser.ReportLine);
+        //    parser.Flush();
+        //    var results = parser.TestResults;
 
-            var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.Output_OneLineWithNewlines");
-            var expectedErrorMessage =
-                "before test\nExpected: 1\nTo be equal to: 2\ntest output\nafter test";
-            testResult.ErrorMessage.Should().Be(expectedErrorMessage);
+        //    var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.Output_OneLineWithNewlines");
+        //    var expectedErrorMessage =
+        //        "before test\nExpected: 1\nTo be equal to: 2\ntest output\nafter test";
+        //    testResult.ErrorMessage.Should().Be(expectedErrorMessage);
 
-            CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
-        }
+        //    CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
+        //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void OutputHandling_OutputOneLine_IsParsedCorrectly()
-        {
-            var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
-            var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
-                .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void OutputHandling_OutputOneLine_IsParsedCorrectly()
+        //{
+        //    var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
+        //    var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
+        //        .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
 
-            var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
-            consoleOutput.ToList().ForEach(parser.ReportLine);
-            parser.Flush();
-            var results = parser.TestResults;
+        //    var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
+        //    consoleOutput.ToList().ForEach(parser.ReportLine);
+        //    parser.Flush();
+        //    var results = parser.TestResults;
 
-            var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.Output_OneLine");
-            var expectedErrorMessage =
-                "before test\nExpected: 1\nTo be equal to: 2\ntest output\nafter test";
-            testResult.ErrorMessage.Should().Be(expectedErrorMessage);
+        //    var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.Output_OneLine");
+        //    var expectedErrorMessage =
+        //        "before test\nExpected: 1\nTo be equal to: 2\ntest output\nafter test";
+        //    testResult.ErrorMessage.Should().Be(expectedErrorMessage);
 
-            CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
-        }
+        //    CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
+        //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void OutputHandling_ManyLinesWithNewlines_IsParsedCorrectly()
-        {
-            var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
-            var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
-                .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void OutputHandling_ManyLinesWithNewlines_IsParsedCorrectly()
+        //{
+        //    var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
+        //    var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
+        //        .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
 
-            var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
-            consoleOutput.ToList().ForEach(parser.ReportLine);
-            parser.Flush();
-            var results = parser.TestResults;
+        //    var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
+        //    consoleOutput.ToList().ForEach(parser.ReportLine);
+        //    parser.Flush();
+        //    var results = parser.TestResults;
 
-            var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.ManyLinesWithNewlines");
-            var expectedErrorMessage =
-                "before test 1\nbefore test 2\nExpected: 1\nTo be equal to: 2\nafter test 1\nafter test 2";
-            testResult.ErrorMessage.Should().Be(expectedErrorMessage);
+        //    var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.ManyLinesWithNewlines");
+        //    var expectedErrorMessage =
+        //        "before test 1\nbefore test 2\nExpected: 1\nTo be equal to: 2\nafter test 1\nafter test 2";
+        //    testResult.ErrorMessage.Should().Be(expectedErrorMessage);
 
-            CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
-        }
+        //    CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
+        //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void OutputHandling_OneLineWithNewlines_IsParsedCorrectly()
-        {
-            var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
-            var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
-                .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void OutputHandling_OneLineWithNewlines_IsParsedCorrectly()
+        //{
+        //    var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
+        //    var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
+        //        .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
 
-            var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
-            consoleOutput.ToList().ForEach(parser.ReportLine);
-            parser.Flush();
-            var results = parser.TestResults;
+        //    var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
+        //    consoleOutput.ToList().ForEach(parser.ReportLine);
+        //    parser.Flush();
+        //    var results = parser.TestResults;
 
-            var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.Output_OneLineWithNewlines");
-            var expectedErrorMessage =
-                "before test\nExpected: 1\nTo be equal to: 2\ntest output\nafter test";
-            testResult.ErrorMessage.Should().Be(expectedErrorMessage);
+        //    var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.Output_OneLineWithNewlines");
+        //    var expectedErrorMessage =
+        //        "before test\nExpected: 1\nTo be equal to: 2\ntest output\nafter test";
+        //    testResult.ErrorMessage.Should().Be(expectedErrorMessage);
 
-            CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
-        }
+        //    CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
+        //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void OutputHandling_OneLine_IsParsedCorrectly()
-        {
-            var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
-            var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
-                .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void OutputHandling_OneLine_IsParsedCorrectly()
+        //{
+        //    var consoleOutput = File.ReadAllLines(TestResources.Tests_ReleaseX64_Output, Encoding.Default);
+        //    var testCases = new GoogleTestDiscoverer(MockLogger.Object, MockOptions.Object)
+        //        .GetTestsFromExecutable(TestResources.Tests_ReleaseX64);
 
-            var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
-            consoleOutput.ToList().ForEach(parser.ReportLine);
-            parser.Flush();
-            var results = parser.TestResults;
+        //    var parser = new StreamingStandardOutputTestResultParser(testCases, MockLogger.Object, MockFrameworkReporter.Object);
+        //    consoleOutput.ToList().ForEach(parser.ReportLine);
+        //    parser.Flush();
+        //    var results = parser.TestResults;
 
-            var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.OneLine");
-            var expectedErrorMessage =
-                "before test\nExpected: 1\nTo be equal to: 2\nafter test";
-            testResult.ErrorMessage.Should().Be(expectedErrorMessage);
+        //    var testResult = results.Single(tr => tr.DisplayName == "OutputHandling.OneLine");
+        //    var expectedErrorMessage =
+        //        "before test\nExpected: 1\nTo be equal to: 2\nafter test";
+        //    testResult.ErrorMessage.Should().Be(expectedErrorMessage);
 
-            CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
-        }
+        //    CheckStandardOutputResultParser(testCases, consoleOutput, results, parser.CrashedTestCase);
+        //}
 
         private List<TestCase> GetTestCases()
         {

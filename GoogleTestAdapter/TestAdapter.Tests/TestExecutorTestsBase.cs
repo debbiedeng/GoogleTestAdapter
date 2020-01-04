@@ -153,32 +153,32 @@ namespace GoogleTestAdapter.TestAdapter
             RunAndVerifyTests(TestResources.DllTests_ReleaseX86, 1, 1, 0);
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_StaticallyLinkedX64Tests_CorrectTestResults()
-        {
-            RunAndVerifyTests(TestResources.Tests_ReleaseX64, TestResources.NrOfPassingTests, TestResources.NrOfFailingTests, 0);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_StaticallyLinkedX64Tests_CorrectTestResults()
+        //{
+        //    RunAndVerifyTests(TestResources.Tests_ReleaseX64, TestResources.NrOfPassingTests, TestResources.NrOfFailingTests, 0);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void RunTests_StaticallyLinkedX64Tests_OutputIsPrintedAtMostOnce()
-        {
-            MockOptions.Setup(o => o.PrintTestOutput).Returns(true);
-            MockOptions.Setup(o => o.OutputMode).Returns(OutputMode.Info);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void RunTests_StaticallyLinkedX64Tests_OutputIsPrintedAtMostOnce()
+        //{
+        //    MockOptions.Setup(o => o.PrintTestOutput).Returns(true);
+        //    MockOptions.Setup(o => o.OutputMode).Returns(OutputMode.Info);
 
-            RunAndVerifyTests(TestResources.Tests_ReleaseX64, TestResources.NrOfPassingTests, TestResources.NrOfFailingTests, 0);
+        //    RunAndVerifyTests(TestResources.Tests_ReleaseX64, TestResources.NrOfPassingTests, TestResources.NrOfFailingTests, 0);
 
-            bool isTestOutputAvailable =
-                !MockOptions.Object.ParallelTestExecution &&
-                (MockOptions.Object.DebuggerKind > DebuggerKind.VsTestFramework || !MockRunContext.Object.IsBeingDebugged);
-            int nrOfExpectedLines = isTestOutputAvailable ? 1 : 0;
+        //    bool isTestOutputAvailable =
+        //        !MockOptions.Object.ParallelTestExecution &&
+        //        (MockOptions.Object.DebuggerKind > DebuggerKind.VsTestFramework || !MockRunContext.Object.IsBeingDebugged);
+        //    int nrOfExpectedLines = isTestOutputAvailable ? 1 : 0;
             
-            MockLogger.Verify(l => l.LogInfo(It.Is<string>(line => line == "[----------] Global test environment set-up.")), Times.Exactly(nrOfExpectedLines));
+        //    MockLogger.Verify(l => l.LogInfo(It.Is<string>(line => line == "[----------] Global test environment set-up.")), Times.Exactly(nrOfExpectedLines));
 
-            MockLogger.Verify(l => l.LogInfo(It.Is<string>(line => line.StartsWith(">>>>>>>>>>>>>>> Output of command"))), Times.Exactly(nrOfExpectedLines));
-            MockLogger.Verify(l => l.LogInfo(It.Is<string>(line => line.StartsWith("<<<<<<<<<<<<<<< End of Output"))), Times.Exactly(nrOfExpectedLines));
-        }
+        //    MockLogger.Verify(l => l.LogInfo(It.Is<string>(line => line.StartsWith(">>>>>>>>>>>>>>> Output of command"))), Times.Exactly(nrOfExpectedLines));
+        //    MockLogger.Verify(l => l.LogInfo(It.Is<string>(line => line.StartsWith("<<<<<<<<<<<<<<< End of Output"))), Times.Exactly(nrOfExpectedLines));
+        //}
 
         [TestMethod]
         [TestCategory(Integration)]

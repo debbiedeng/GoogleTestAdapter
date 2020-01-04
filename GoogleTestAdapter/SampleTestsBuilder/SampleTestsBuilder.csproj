@@ -59,12 +59,6 @@
   <PropertyGroup>
     <PreBuildEvent>"$(MSBuildToolsPath)\msbuild" "$(SolutionDir)..\SampleTests\SampleTests.sln" /t:Build /p:Configuration=Debug;Platform=Win32 /m
 
-"$(MSBuildToolsPath)\msbuild" "$(SolutionDir)..\SampleTests\SampleTests.sln" /t:Build /p:Configuration=Release;Platform=Win32 /m
-
-"$(MSBuildToolsPath)\msbuild" "$(SolutionDir)..\SampleTests\SampleTests.sln" /t:Build /p:Configuration=Debug;Platform=X64 /m
-
-"$(MSBuildToolsPath)\msbuild" "$(SolutionDir)..\SampleTests\SampleTests.sln" /t:Build /p:Configuration=Release;Platform=X64 /m
-
 if not exist "$(ProjectDir)CppLoadTests.cpp" (
   copy NUL "$(ProjectDir)CppLoadTests.cpp"
 )</PreBuildEvent>

@@ -27,14 +27,14 @@ namespace GoogleTestAdapter.DiaResolver
         }
 
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void PeParser_X64StaticallyLinked_FindsEmbeddedPdbPath()
-        {
-            string pdb = PeParser.ExtractPdbPath(TestResources.Tests_ReleaseX64, MockLogger.Object);
-            string expectedPdb = Path.GetFullPath(Path.ChangeExtension(TestResources.Tests_ReleaseX64, ".pdb"));
-            pdb.Should().Be(expectedPdb);
-        }
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void PeParser_X64StaticallyLinked_FindsEmbeddedPdbPath()
+        //{
+        //    string pdb = PeParser.ExtractPdbPath(TestResources.Tests_ReleaseX64, MockLogger.Object);
+        //    string expectedPdb = Path.GetFullPath(Path.ChangeExtension(TestResources.Tests_ReleaseX64, ".pdb"));
+        //    pdb.Should().Be(expectedPdb);
+        //}
 
         [TestMethod]
         [TestCategory(Unit)]

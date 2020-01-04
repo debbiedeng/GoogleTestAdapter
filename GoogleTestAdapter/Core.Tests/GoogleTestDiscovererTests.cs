@@ -31,11 +31,11 @@ namespace GoogleTestAdapter
         public void VerifyExecutableTrust_TestsResources_AreVerified()
         {
             VerifyExecutableIsTrusted(TestResources.SemaphoreExe);
-            VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX86);
+            //VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX86);
             VerifyExecutableIsTrusted(TestResources.Tests_DebugX86);
-            VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX64);
-            VerifyExecutableIsTrusted(TestResources.Tests_DebugX64);
-            VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX64);
+            //VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX64);
+            //VerifyExecutableIsTrusted(TestResources.Tests_DebugX64);
+            //VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX64);
             VerifyExecutableIsTrusted(TestResources.Tests_DebugX86_Gtest170);
             VerifyExecutableIsTrusted(TestResources.CrashingTests_ReleaseX86);
             VerifyExecutableIsTrusted(TestResources.CrashingTests_DebugX86);
@@ -175,12 +175,12 @@ namespace GoogleTestAdapter
             MockLogger.Verify(l => l.DebugInfo(It.Is<string>(msg => msg.Contains("Exit code") && msg.Contains("ignored"))), Times.Once);
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_SampleTestsRelease_FindsTestsWithLocation()
-        {
-            FindTests(TestResources.Tests_ReleaseX86);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_SampleTestsRelease_FindsTestsWithLocation()
+        //{
+        //    FindTests(TestResources.Tests_ReleaseX86);
+        //}
 
         [TestMethod]
         [TestCategory(Integration)]
@@ -366,20 +366,20 @@ namespace GoogleTestAdapter
             }
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_Tests_TestNamesBeingPrefixesAreFoundWithCorrectSourceLocation()
-        {
-            var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
-            IList<TestCase> testCases = discoverer.GetTestsFromExecutable(TestResources.Tests_ReleaseX86);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_Tests_TestNamesBeingPrefixesAreFoundWithCorrectSourceLocation()
+        //{
+        //    var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
+        //    IList<TestCase> testCases = discoverer.GetTestsFromExecutable(TestResources.Tests_ReleaseX86);
 
-            var abcdTest = testCases.Single(tc => tc.DisplayName == "abcd.t");
-            abcdTest.LineNumber.Should().Be(156);
-            var bbcdTest = testCases.Single(tc => tc.DisplayName == "bbcd.t");
-            bbcdTest.LineNumber.Should().Be(161);
-            var bcdTest = testCases.Single(tc => tc.DisplayName == "bcd.t");
-            bcdTest.LineNumber.Should().Be(166);
-        }
+        //    var abcdTest = testCases.Single(tc => tc.DisplayName == "abcd.t");
+        //    abcdTest.LineNumber.Should().Be(156);
+        //    var bbcdTest = testCases.Single(tc => tc.DisplayName == "bbcd.t");
+        //    bbcdTest.LineNumber.Should().Be(161);
+        //    var bcdTest = testCases.Single(tc => tc.DisplayName == "bcd.t");
+        //    bcdTest.LineNumber.Should().Be(166);
+        //}
 
         [TestMethod]
         [TestCategory(Load)]

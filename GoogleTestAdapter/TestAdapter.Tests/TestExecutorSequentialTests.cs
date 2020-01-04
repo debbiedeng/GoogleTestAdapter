@@ -120,17 +120,17 @@ namespace GoogleTestAdapter.TestAdapter
             base.RunTests_ExternallyLinkedX64_CorrectTestResults();
         }
 
-        [TestMethod]
-        public override void RunTests_StaticallyLinkedX64Tests_CorrectTestResults()
-        {
-            base.RunTests_StaticallyLinkedX64Tests_CorrectTestResults();
-        }        
+        //[TestMethod]
+        //public override void RunTests_StaticallyLinkedX64Tests_CorrectTestResults()
+        //{
+        //    base.RunTests_StaticallyLinkedX64Tests_CorrectTestResults();
+        //}        
         
-        [TestMethod]
-        public override void RunTests_StaticallyLinkedX64Tests_OutputIsPrintedAtMostOnce()
-        {
-            base.RunTests_StaticallyLinkedX64Tests_OutputIsPrintedAtMostOnce();
-        }
+        //[TestMethod]
+        //public override void RunTests_StaticallyLinkedX64Tests_OutputIsPrintedAtMostOnce()
+        //{
+        //    base.RunTests_StaticallyLinkedX64Tests_OutputIsPrintedAtMostOnce();
+        //}
 
         [TestMethod]
         [TestCategory(Integration)]

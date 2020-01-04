@@ -71,19 +71,19 @@ namespace GoogleTestAdapter.Helpers
             result.Should().Be(path);
         }
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void BinaryFileContainsStrings_TestX86Release_ShouldContainGoogleTestIndicator()
-        {
-            Utils.BinaryFileContainsStrings(TestResources.Tests_ReleaseX86, Encoding.ASCII, GoogleTestConstants.GoogleTestExecutableMarkers).Should().BeTrue();
-        }
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void BinaryFileContainsStrings_TestX86Release_ShouldContainGoogleTestIndicator()
+        //{
+        //    Utils.BinaryFileContainsStrings(TestResources.Tests_ReleaseX86, Encoding.ASCII, GoogleTestConstants.GoogleTestExecutableMarkers).Should().BeTrue();
+        //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void BinaryFileContainsStrings_TestX64Release_ShouldContainGoogleTestIndicator()
-        {
-            Utils.BinaryFileContainsStrings(TestResources.Tests_ReleaseX64, Encoding.ASCII, GoogleTestConstants.GoogleTestExecutableMarkers).Should().BeTrue();
-        }
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void BinaryFileContainsStrings_TestX64Release_ShouldContainGoogleTestIndicator()
+        //{
+        //    Utils.BinaryFileContainsStrings(TestResources.Tests_ReleaseX64, Encoding.ASCII, GoogleTestConstants.GoogleTestExecutableMarkers).Should().BeTrue();
+        //}
 
         [TestMethod]
         [TestCategory(Unit)]
@@ -92,12 +92,12 @@ namespace GoogleTestAdapter.Helpers
             Utils.BinaryFileContainsStrings(TestResources.Tests_DebugX86, Encoding.ASCII, GoogleTestConstants.GoogleTestExecutableMarkers).Should().BeTrue();
         }
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void BinaryFileContainsStrings_TestX64Debug_ShouldContainGoogleTestIndicator()
-        {
-            Utils.BinaryFileContainsStrings(TestResources.Tests_DebugX64, Encoding.ASCII, GoogleTestConstants.GoogleTestExecutableMarkers).Should().BeTrue();
-        }
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void BinaryFileContainsStrings_TestX64Debug_ShouldContainGoogleTestIndicator()
+        //{
+        //    Utils.BinaryFileContainsStrings(TestResources.Tests_DebugX64, Encoding.ASCII, GoogleTestConstants.GoogleTestExecutableMarkers).Should().BeTrue();
+        //}
 
         [TestMethod]
         [TestCategory(Unit)]

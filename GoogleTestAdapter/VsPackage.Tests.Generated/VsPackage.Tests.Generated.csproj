@@ -60,11 +60,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ConsoleTests.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConsoleTests.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,10 +69,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConsoleTests.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ConsoleTests.cs</LastGenOutput>
-    </Content>
     <Content Include="GoldenFiles\ConsoleDllTests__HardCrashingSampleTests.xml" />
     <Content Include="GoldenFiles\ConsoleDllTests__HardCrashingSampleTests_Settings_Coverage_Isolation.xml" />
     <Content Include="GoldenFiles\ConsoleDllTests__List_TestsOf_HardCrashingSampleTests.txt" />

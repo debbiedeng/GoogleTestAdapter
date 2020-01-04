@@ -60,8 +60,8 @@ namespace GoogleTestAdapter.Tests.Common.CodeGeneration
                     return TestResources.Tests_DebugX86;
                 case "SampleTests170":
                     return TestResources.Tests_DebugX86_Gtest170;
-                case "SampleTestsX64":
-                    return TestResources.Tests_ReleaseX64;
+                //case "SampleTestsX64":
+                //    return TestResources.Tests_ReleaseX64;
                 case "LoadTests":
                     return TestResources.LoadTests_ReleaseX86;
                 case "HardCrashingSampleTests":
