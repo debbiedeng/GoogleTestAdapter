@@ -36,9 +36,9 @@ namespace GoogleTestAdapter
             //VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX64);
             //VerifyExecutableIsTrusted(TestResources.Tests_DebugX64);
             //VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX64);
-            VerifyExecutableIsTrusted(TestResources.Tests_DebugX86_Gtest170);
-            //VerifyExecutableIsTrusted(TestResources.CrashingTests_ReleaseX86);
-            VerifyExecutableIsTrusted(TestResources.CrashingTests_DebugX86);
+            //VerifyExecutableIsTrusted(TestResources.Tests_DebugX86_Gtest170);
+            ////VerifyExecutableIsTrusted(TestResources.CrashingTests_ReleaseX86);
+            //VerifyExecutableIsTrusted(TestResources.CrashingTests_DebugX86);
             //VerifyExecutableIsTrusted(TestResources.CrashingTests_ReleaseX64);
             //VerifyExecutableIsTrusted(TestResources.CrashingTests_DebugX64);
             VerifyExecutableIsTrusted(TestResources.AlwaysCrashingExe);
@@ -149,31 +149,31 @@ namespace GoogleTestAdapter
             stopwatch.Elapsed.Should().BeCloseTo(GoogleTestDiscoverer.RegexTimeout, 250);
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_SampleTestsDebug_FindsTestsWithLocation()
-        {
-            FindTests(TestResources.Tests_DebugX86);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_SampleTestsDebug_FindsTestsWithLocation()
+        //{
+        //    FindTests(TestResources.Tests_DebugX86);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_SampleTestsDebugWithExitCodeTest_FindsTestsWithLocationAndExitCodeTest()
-        {
-            string testCaseName = "ExitCode";
-            MockOptions.Setup(o => o.ExitCodeTestCase).Returns(testCaseName);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_SampleTestsDebugWithExitCodeTest_FindsTestsWithLocationAndExitCodeTest()
+        //{
+        //    string testCaseName = "ExitCode";
+        //    MockOptions.Setup(o => o.ExitCodeTestCase).Returns(testCaseName);
 
-            var testCases = FindTests(TestResources.Tests_DebugX86, TestResources.NrOfTests + 1);
+        //    var testCases = FindTests(TestResources.Tests_DebugX86, TestResources.NrOfTests + 1);
 
-            string finalName = testCaseName + "." + Path.GetFileName(TestResources.Tests_DebugX86).Replace(".", "_");
-            var exitCodeTestCase = testCases.Single(tc => tc.FullyQualifiedName == finalName);
-            exitCodeTestCase.DisplayName.Should().Be(finalName);
-            exitCodeTestCase.Source.Should().Be(TestResources.Tests_DebugX86);
-            exitCodeTestCase.CodeFilePath.Should().ContainEquivalentOf(@"sampletests\tests\main.cpp");
-            exitCodeTestCase.LineNumber.Should().Be(8);
+        //    string finalName = testCaseName + "." + Path.GetFileName(TestResources.Tests_DebugX86).Replace(".", "_");
+        //    var exitCodeTestCase = testCases.Single(tc => tc.FullyQualifiedName == finalName);
+        //    exitCodeTestCase.DisplayName.Should().Be(finalName);
+        //    exitCodeTestCase.Source.Should().Be(TestResources.Tests_DebugX86);
+        //    exitCodeTestCase.CodeFilePath.Should().ContainEquivalentOf(@"sampletests\tests\main.cpp");
+        //    exitCodeTestCase.LineNumber.Should().Be(8);
 
-            MockLogger.Verify(l => l.DebugInfo(It.Is<string>(msg => msg.Contains("Exit code") && msg.Contains("ignored"))), Times.Once);
-        }
+        //    MockLogger.Verify(l => l.DebugInfo(It.Is<string>(msg => msg.Contains("Exit code") && msg.Contains("ignored"))), Times.Once);
+        //}
 
         //[TestMethod]
         //[TestCategory(Integration)]
@@ -182,12 +182,12 @@ namespace GoogleTestAdapter
         //    FindTests(TestResources.Tests_ReleaseX86);
         //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_SampleTests170_FindsTestsWithLocation()
-        {
-            FindTests(TestResources.Tests_DebugX86_Gtest170, TestResources.NrOfGtest170CompatibleTests);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_SampleTests170_FindsTestsWithLocation()
+        //{
+        //    FindTests(TestResources.Tests_DebugX86_Gtest170, TestResources.NrOfGtest170CompatibleTests);
+        //}
 
         //[TestMethod]
         //[TestCategory(Integration)]
@@ -328,27 +328,27 @@ namespace GoogleTestAdapter
             mockFactory.Verify(f => f.Create(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<ILogger>()), Times.AtLeastOnce);
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public void GetTestsFromExecutable_DoNotParseSymbolInformation_DiaIsNotInvoked()
-        {
-            var mockFactory = new Mock<IDiaResolverFactory>();
-            MockOptions.Setup(o => o.ParseSymbolInformation).Returns(false);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public void GetTestsFromExecutable_DoNotParseSymbolInformation_DiaIsNotInvoked()
+        //{
+        //    var mockFactory = new Mock<IDiaResolverFactory>();
+        //    MockOptions.Setup(o => o.ParseSymbolInformation).Returns(false);
 
-            IList<TestCase> testCases = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options, new ProcessExecutorFactory(), mockFactory.Object)
-                .GetTestsFromExecutable(TestResources.Tests_DebugX86);
+        //    IList<TestCase> testCases = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options, new ProcessExecutorFactory(), mockFactory.Object)
+        //        .GetTestsFromExecutable(TestResources.Tests_DebugX86);
 
-            mockFactory.Verify(f => f.Create(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<ILogger>()), Times.Never);
-            testCases.Should().HaveCount(TestResources.NrOfTests);
-            foreach (TestCase testCase in testCases)
-            {
-                testCase.CodeFilePath.Should().Be("");
-                testCase.LineNumber.Should().Be(0);
-                testCase.Source.Should().Be(TestResources.Tests_DebugX86);
-                testCase.DisplayName.Should().NotBeNullOrEmpty();
-                testCase.FullyQualifiedName.Should().NotBeNullOrEmpty();
-            }
-        }
+        //    mockFactory.Verify(f => f.Create(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<ILogger>()), Times.Never);
+        //    testCases.Should().HaveCount(TestResources.NrOfTests);
+        //    foreach (TestCase testCase in testCases)
+        //    {
+        //        testCase.CodeFilePath.Should().Be("");
+        //        testCase.LineNumber.Should().Be(0);
+        //        testCase.Source.Should().Be(TestResources.Tests_DebugX86);
+        //        testCase.DisplayName.Should().NotBeNullOrEmpty();
+        //        testCase.FullyQualifiedName.Should().NotBeNullOrEmpty();
+        //    }
+        //}
 
         //[TestMethod]
         //[TestCategory(Integration)]
@@ -381,53 +381,53 @@ namespace GoogleTestAdapter
         //    bcdTest.LineNumber.Should().Be(166);
         //}
 
-        [TestMethod]
-        [TestCategory(Load)]
-        public void GetTestsFromExecutable_LoadTests_AreFoundInReasonableTime()
-        {
-            if (CiSupport.IsRunningOnBuildServer)
-            {
-                Assert.Inconclusive("Skipping test since it is unstable on the build server");
-            }
+        //[TestMethod]
+        //[TestCategory(Load)]
+        //public void GetTestsFromExecutable_LoadTests_AreFoundInReasonableTime()
+        //{
+        //    if (CiSupport.IsRunningOnBuildServer)
+        //    {
+        //        Assert.Inconclusive("Skipping test since it is unstable on the build server");
+        //    }
 
-            var stopwatch = Stopwatch.StartNew();
-            var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
-            IList<TestCase> testCases = discoverer.GetTestsFromExecutable(TestResources.LoadTests_Generated);
-            stopwatch.Stop();
-            var actualDuration = stopwatch.Elapsed;
+        //    var stopwatch = Stopwatch.StartNew();
+        //    var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
+        //    IList<TestCase> testCases = discoverer.GetTestsFromExecutable(TestResources.LoadTests_Generated);
+        //    stopwatch.Stop();
+        //    var actualDuration = stopwatch.Elapsed;
 
-            testCases.Count.Should().BePositive();
-            int testParsingDurationInMs = CiSupport.GetWeightedDuration(testCases.Count); // .5ms per test (discovery and processing)
-            int overheadInMs = CiSupport.GetWeightedDuration(1000); // pretty much arbitrary - let's see...
-            var maxDuration = TimeSpan.FromMilliseconds(testParsingDurationInMs + overheadInMs);
+        //    testCases.Count.Should().BePositive();
+        //    int testParsingDurationInMs = CiSupport.GetWeightedDuration(testCases.Count); // .5ms per test (discovery and processing)
+        //    int overheadInMs = CiSupport.GetWeightedDuration(1000); // pretty much arbitrary - let's see...
+        //    var maxDuration = TimeSpan.FromMilliseconds(testParsingDurationInMs + overheadInMs);
 
-            actualDuration.Should().BeLessThan(maxDuration);
-        }
+        //    actualDuration.Should().BeLessThan(maxDuration);
+        //}
 
-        [TestMethod]
-        [TestCategory(Load)]
-        public void GetTestsFromExecutable_OldExecutionEnvironment_LoadTests_AreFoundInReasonableTime()
-        {
-            if (CiSupport.IsRunningOnBuildServer)
-            {
-                Assert.Inconclusive("Skipping test since it is unstable on the build server");
-            }
+        //[TestMethod]
+        //[TestCategory(Load)]
+        //public void GetTestsFromExecutable_OldExecutionEnvironment_LoadTests_AreFoundInReasonableTime()
+        //{
+        //    if (CiSupport.IsRunningOnBuildServer)
+        //    {
+        //        Assert.Inconclusive("Skipping test since it is unstable on the build server");
+        //    }
 
-            MockOptions.Setup(o => o.DebuggerKind).Returns(DebuggerKind.VsTestFramework);
+        //    MockOptions.Setup(o => o.DebuggerKind).Returns(DebuggerKind.VsTestFramework);
 
-            var stopwatch = Stopwatch.StartNew();
-            var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
-            IList<TestCase> testCases = discoverer.GetTestsFromExecutable(TestResources.LoadTests_Generated);
-            stopwatch.Stop();
-            var actualDuration = stopwatch.Elapsed;
+        //    var stopwatch = Stopwatch.StartNew();
+        //    var discoverer = new GoogleTestDiscoverer(TestEnvironment.Logger, TestEnvironment.Options);
+        //    IList<TestCase> testCases = discoverer.GetTestsFromExecutable(TestResources.LoadTests_Generated);
+        //    stopwatch.Stop();
+        //    var actualDuration = stopwatch.Elapsed;
 
-            testCases.Count.Should().BePositive();
-            int testParsingDurationInMs = CiSupport.GetWeightedDuration(testCases.Count); // .5ms per test (discovery and processing)
-            int overheadInMs = CiSupport.GetWeightedDuration(1000); // pretty much arbitrary - let's see...
-            var maxDuration = TimeSpan.FromMilliseconds(testParsingDurationInMs + overheadInMs);
+        //    testCases.Count.Should().BePositive();
+        //    int testParsingDurationInMs = CiSupport.GetWeightedDuration(testCases.Count); // .5ms per test (discovery and processing)
+        //    int overheadInMs = CiSupport.GetWeightedDuration(1000); // pretty much arbitrary - let's see...
+        //    var maxDuration = TimeSpan.FromMilliseconds(testParsingDurationInMs + overheadInMs);
 
-            actualDuration.Should().BeLessThan(maxDuration);
-        }
+        //    actualDuration.Should().BeLessThan(maxDuration);
+        //}
 
         private void AssertIsGoogleTestExecutable(string executable, bool isGoogleTestExecutable, string regex = "")
         {

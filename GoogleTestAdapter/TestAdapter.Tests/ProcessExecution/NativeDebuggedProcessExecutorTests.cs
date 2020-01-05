@@ -32,12 +32,12 @@ namespace GoogleTestAdapter.TestAdapter.ProcessExecution
             Test_ExecuteProcessBlocking_PingLocalHost();
         }
 
-        [TestMethod]
-        [TestCategory(TestMetadata.TestCategories.Unit)]
-        public void ExecuteProcessBlocking_SampleTests()
-        {
-            Test_ExecuteProcessBlocking_SampleTests();
-        }
+        //[TestMethod]
+        //[TestCategory(TestMetadata.TestCategories.Unit)]
+        //public void ExecuteProcessBlocking_SampleTests()
+        //{
+        //    Test_ExecuteProcessBlocking_SampleTests();
+        //}
 
         [TestMethod]
         [TestCategory(TestMetadata.TestCategories.Unit)]

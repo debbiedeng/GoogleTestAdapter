@@ -7,8 +7,7 @@
 				<BatchForTestSetup>$(SolutionDir)Tests\Returns0.bat</BatchForTestSetup>
 				<BatchForTestTeardown>$(SolutionDir)Tests\Returns1.bat</BatchForTestTeardown>
 				<WorkingDir>$(SolutionDir)</WorkingDir>
-			</Settings>
-		</SolutionSettings>
+			</Settings></SolutionSettings>
 		<ProjectSettings>
 			<Settings ProjectRegex="LoadTests_gta\.exe|CrashingTests_gta\.exe">
 				<TestDiscoveryRegex>.*Tests.*_gta.exe</TestDiscoveryRegex>

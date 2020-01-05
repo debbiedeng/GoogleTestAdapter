@@ -34,29 +34,29 @@ namespace GoogleTestAdapter
             }
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithOneTrait()
-        {
-            Trait[] traits = { new Trait("Type", "Small") };
-            AssertFindsTestWithTraits("TheFixture.AddPassesWithTraits", traits);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithOneTrait()
+        //{
+        //    Trait[] traits = { new Trait("Type", "Small") };
+        //    AssertFindsTestWithTraits("TheFixture.AddPassesWithTraits", traits);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithTwoTraits()
-        {
-            Trait[] traits = { new Trait("Type", "Small"), new Trait("Author", "CSO") };
-            AssertFindsTestWithTraits("TheFixture.AddPassesWithTraits2", traits);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithTwoTraits()
+        //{
+        //    Trait[] traits = { new Trait("Type", "Small"), new Trait("Author", "CSO") };
+        //    AssertFindsTestWithTraits("TheFixture.AddPassesWithTraits2", traits);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithThreeTraits()
-        {
-            Trait[] traits = { new Trait("Type", "Small"), new Trait("Author", "CSO"), new Trait("TestCategory", "Integration") };
-            AssertFindsTestWithTraits("TheFixture.AddPassesWithTraits3", traits);
-        }
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithThreeTraits()
+        //{
+        //    Trait[] traits = { new Trait("Type", "Small"), new Trait("Author", "CSO"), new Trait("TestCategory", "Integration") };
+        //    AssertFindsTestWithTraits("TheFixture.AddPassesWithTraits3", traits);
+        //}
 
         [TestMethod]
         [TestCategory(Integration)]
@@ -269,79 +269,79 @@ namespace GoogleTestAdapter
             AssertFindsTestWithTraits(testname, traits);
         }
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void GetTestsFromExecutable_RegexBeforeFromOptions_TraitFromOptionsIsOverridenByTraitFromTest()
-        {
-            MockOptions.Setup(o => o.TraitsRegexesBefore).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPassesWithTraits"), "Type", "SomeNewType").Yield().ToList());
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void GetTestsFromExecutable_RegexBeforeFromOptions_TraitFromOptionsIsOverridenByTraitFromTest()
+        //{
+        //    MockOptions.Setup(o => o.TraitsRegexesBefore).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPassesWithTraits"), "Type", "SomeNewType").Yield().ToList());
 
-            Trait[] traits = { new Trait("Type", "Medium") };
-            AssertFindsTestWithTraits("TestMath.AddPassesWithTraits", traits);
-        }
+        //    Trait[] traits = { new Trait("Type", "Medium") };
+        //    AssertFindsTestWithTraits("TestMath.AddPassesWithTraits", traits);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void GetTestsFromExecutable_BothRegexesFromOptions_BeforeTraitIsOverridenByAfterTrait()
-        {
-            MockOptions.Setup(o => o.TraitsRegexesBefore).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPasses"), "Type", "BeforeType").Yield().ToList());
-            MockOptions.Setup(o => o.TraitsRegexesAfter).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPasses"), "Type", "AfterType").Yield().ToList());
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void GetTestsFromExecutable_BothRegexesFromOptions_BeforeTraitIsOverridenByAfterTrait()
+        //{
+        //    MockOptions.Setup(o => o.TraitsRegexesBefore).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPasses"), "Type", "BeforeType").Yield().ToList());
+        //    MockOptions.Setup(o => o.TraitsRegexesAfter).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPasses"), "Type", "AfterType").Yield().ToList());
 
-            Trait[] traits = { new Trait("Type", "AfterType") };
-            AssertFindsTestWithTraits("TestMath.AddPasses", traits);
-        }
+        //    Trait[] traits = { new Trait("Type", "AfterType") };
+        //    AssertFindsTestWithTraits("TestMath.AddPasses", traits);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void GetTestsFromExecutable_RegexAfterFromOptions_AfterTraitOverridesTraitFromTest()
-        {
-            Trait[] traits = { new Trait("Type", "Medium") };
-            AssertFindsTestWithTraits("TestMath.AddPassesWithTraits", traits);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void GetTestsFromExecutable_RegexAfterFromOptions_AfterTraitOverridesTraitFromTest()
+        //{
+        //    Trait[] traits = { new Trait("Type", "Medium") };
+        //    AssertFindsTestWithTraits("TestMath.AddPassesWithTraits", traits);
 
-            MockOptions.Setup(o => o.TraitsRegexesAfter).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPassesWithTraits"), "Type", "SomeNewType").Yield().ToList());
+        //    MockOptions.Setup(o => o.TraitsRegexesAfter).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPassesWithTraits"), "Type", "SomeNewType").Yield().ToList());
 
-            traits = new[] { new Trait("Type", "SomeNewType") };
-            AssertFindsTestWithTraits("TestMath.AddPassesWithTraits", traits);
-        }
+        //    traits = new[] { new Trait("Type", "SomeNewType") };
+        //    AssertFindsTestWithTraits("TestMath.AddPassesWithTraits", traits);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        public virtual void GetTestsFromExecutable_RegexAfterFromOptions_AddsTraitIfNotAlreadyExisting()
-        {
-            Trait[] traits = { };
-            AssertFindsTestWithTraits("TestMath.AddPasses", traits);
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //public virtual void GetTestsFromExecutable_RegexAfterFromOptions_AddsTraitIfNotAlreadyExisting()
+        //{
+        //    Trait[] traits = { };
+        //    AssertFindsTestWithTraits("TestMath.AddPasses", traits);
 
-            MockOptions.Setup(o => o.TraitsRegexesAfter).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPasses"), "Type", "SomeNewType").Yield().ToList());
+        //    MockOptions.Setup(o => o.TraitsRegexesAfter).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPasses"), "Type", "SomeNewType").Yield().ToList());
 
-            traits = new[] { new Trait("Type", "SomeNewType") };
-            AssertFindsTestWithTraits("TestMath.AddPasses", traits);
-        }
+        //    traits = new[] { new Trait("Type", "SomeNewType") };
+        //    AssertFindsTestWithTraits("TestMath.AddPasses", traits);
+        //}
 
-        [TestMethod]
-        [TestCategory(Integration)]
-        [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
-        public virtual void GetTestsFromExecutable_RegexButNoSourceLocation_TraitsAreAdded()
-        {
-            string pdb = Path.ChangeExtension(SampleTestToUse, "pdb");
-            pdb.AsFileInfo().Should().Exist();
-            string tempFile = Path.ChangeExtension(pdb, "gtatmpext");
-            tempFile.AsFileInfo().Should().NotExist();
+        //[TestMethod]
+        //[TestCategory(Integration)]
+        //[SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
+        //public virtual void GetTestsFromExecutable_RegexButNoSourceLocation_TraitsAreAdded()
+        //{
+        //    string pdb = Path.ChangeExtension(SampleTestToUse, "pdb");
+        //    pdb.AsFileInfo().Should().Exist();
+        //    string tempFile = Path.ChangeExtension(pdb, "gtatmpext");
+        //    tempFile.AsFileInfo().Should().NotExist();
 
-            try
-            {
-                File.Move(pdb, tempFile);
-                pdb.AsFileInfo().Should().NotExist();
+        //    try
+        //    {
+        //        File.Move(pdb, tempFile);
+        //        pdb.AsFileInfo().Should().NotExist();
 
-                MockOptions.Setup(o => o.TraitsRegexesAfter).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPasses"), "Type", "SomeNewType").Yield().ToList());
+        //        MockOptions.Setup(o => o.TraitsRegexesAfter).Returns(new RegexTraitPair(Regex.Escape("TestMath.AddPasses"), "Type", "SomeNewType").Yield().ToList());
 
-                var traits = new[] { new Trait("Type", "SomeNewType") };
-                AssertFindsTestWithTraits("TestMath.AddPasses", traits);
-            }
-            finally
-            {
-                File.Move(tempFile, pdb);
-                pdb.AsFileInfo().Should().Exist();
-            }
-        }
+        //        var traits = new[] { new Trait("Type", "SomeNewType") };
+        //        AssertFindsTestWithTraits("TestMath.AddPasses", traits);
+        //    }
+        //    finally
+        //    {
+        //        File.Move(tempFile, pdb);
+        //        pdb.AsFileInfo().Should().Exist();
+        //    }
+        //}
 
         [TestMethod]
         [TestCategory(Integration)]

@@ -30,7 +30,7 @@ namespace GoogleTestAdapter.Tests.Common
                 {
                     _allTestCasesExceptLoadTests = new List<TestCase>();
                     _allTestCasesExceptLoadTests.AddRange(AllTestCasesOfSampleTests);
-                    _allTestCasesExceptLoadTests.AddRange(AllTestCasesOfHardCrashingTests);
+                    //_allTestCasesExceptLoadTests.AddRange(AllTestCasesOfHardCrashingTests);
                     //_allTestCasesExceptLoadTests.AddRange(AllTestCasesOfLongRunningTests);
                 }
                 return _allTestCasesExceptLoadTests;
@@ -41,9 +41,9 @@ namespace GoogleTestAdapter.Tests.Common
         public List<TestCase> AllTestCasesOfSampleTests 
             => GetTestCases(TestResources.Tests_DebugX86, ref _allTestCasesOfSampleTests);
 
-        private List<TestCase> _allTestCasesOfHardCrashindTests;
-        public List<TestCase> AllTestCasesOfHardCrashingTests 
-            => GetTestCases(TestResources.CrashingTests_DebugX86, ref _allTestCasesOfHardCrashindTests);
+        //private List<TestCase> _allTestCasesOfHardCrashindTests;
+        //public List<TestCase> AllTestCasesOfHardCrashingTests 
+        //    => GetTestCases(TestResources.CrashingTests_DebugX86, ref _allTestCasesOfHardCrashindTests);
 
         //private List<TestCase> _allTestCasesOfLongRunningTests;
         //public List<TestCase> AllTestCasesOfLongRunningTests 

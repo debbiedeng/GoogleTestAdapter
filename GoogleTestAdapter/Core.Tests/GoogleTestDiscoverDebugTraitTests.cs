@@ -10,29 +10,29 @@ namespace GoogleTestAdapter
 
         #region Method stubs for code coverage
 
-        [TestMethod]
-        public override void GetTestsFromExecutable_RegexAfterFromOptions_AddsTraitIfNotAlreadyExisting()
-        {
-            base.GetTestsFromExecutable_RegexAfterFromOptions_AddsTraitIfNotAlreadyExisting();
-        }
+        //[TestMethod]
+        //public override void GetTestsFromExecutable_RegexAfterFromOptions_AddsTraitIfNotAlreadyExisting()
+        //{
+        //    base.GetTestsFromExecutable_RegexAfterFromOptions_AddsTraitIfNotAlreadyExisting();
+        //}
 
-        [TestMethod]
-        public override void GetTestsFromExecutable_RegexButNoSourceLocation_TraitsAreAdded()
-        {
-            base.GetTestsFromExecutable_RegexButNoSourceLocation_TraitsAreAdded();
-        }
+        //[TestMethod]
+        //public override void GetTestsFromExecutable_RegexButNoSourceLocation_TraitsAreAdded()
+        //{
+        //    base.GetTestsFromExecutable_RegexButNoSourceLocation_TraitsAreAdded();
+        //}
 
-        [TestMethod]
-        public override void GetTestsFromExecutable_BothRegexesFromOptions_BeforeTraitIsOverridenByAfterTrait()
-        {
-            base.GetTestsFromExecutable_BothRegexesFromOptions_BeforeTraitIsOverridenByAfterTrait();
-        }
+        //[TestMethod]
+        //public override void GetTestsFromExecutable_BothRegexesFromOptions_BeforeTraitIsOverridenByAfterTrait()
+        //{
+        //    base.GetTestsFromExecutable_BothRegexesFromOptions_BeforeTraitIsOverridenByAfterTrait();
+        //}
 
-        [TestMethod]
-        public override void GetTestsFromExecutable_RegexAfterFromOptions_AfterTraitOverridesTraitFromTest()
-        {
-            base.GetTestsFromExecutable_RegexAfterFromOptions_AfterTraitOverridesTraitFromTest();
-        }
+        //[TestMethod]
+        //public override void GetTestsFromExecutable_RegexAfterFromOptions_AfterTraitOverridesTraitFromTest()
+        //{
+        //    base.GetTestsFromExecutable_RegexAfterFromOptions_AfterTraitOverridesTraitFromTest();
+        //}
 
         [TestMethod]
         public override void GetTestsFromExecutable_RegexBeforeFromOptions_AddsTraitIfNotAlreadyExisting()
@@ -40,29 +40,29 @@ namespace GoogleTestAdapter
             base.GetTestsFromExecutable_RegexBeforeFromOptions_AddsTraitIfNotAlreadyExisting();
         }
 
-        [TestMethod]
-        public override void GetTestsFromExecutable_RegexBeforeFromOptions_TraitFromOptionsIsOverridenByTraitFromTest()
-        {
-            base.GetTestsFromExecutable_RegexBeforeFromOptions_TraitFromOptionsIsOverridenByTraitFromTest();
-        }
+        //[TestMethod]
+        //public override void GetTestsFromExecutable_RegexBeforeFromOptions_TraitFromOptionsIsOverridenByTraitFromTest()
+        //{
+        //    base.GetTestsFromExecutable_RegexBeforeFromOptions_TraitFromOptionsIsOverridenByTraitFromTest();
+        //}
 
-        [TestMethod]
-        public override void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithOneTrait()
-        {
-            base.GetTestsFromExecutable_SampleTests_FindsFixtureTestWithOneTrait();
-        }
+        //[TestMethod]
+        //public override void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithOneTrait()
+        //{
+        //    base.GetTestsFromExecutable_SampleTests_FindsFixtureTestWithOneTrait();
+        //}
 
-        [TestMethod]
-        public override void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithThreeTraits()
-        {
-            base.GetTestsFromExecutable_SampleTests_FindsFixtureTestWithThreeTraits();
-        }
+        //[TestMethod]
+        //public override void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithThreeTraits()
+        //{
+        //    base.GetTestsFromExecutable_SampleTests_FindsFixtureTestWithThreeTraits();
+        //}
 
-        [TestMethod]
-        public override void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithTwoTraits()
-        {
-            base.GetTestsFromExecutable_SampleTests_FindsFixtureTestWithTwoTraits();
-        }
+        //[TestMethod]
+        //public override void GetTestsFromExecutable_SampleTests_FindsFixtureTestWithTwoTraits()
+        //{
+        //    base.GetTestsFromExecutable_SampleTests_FindsFixtureTestWithTwoTraits();
+        //}
 
         [TestMethod]
         public override void GetTestsFromExecutable_SampleTests_FindsAllAmountsOfTraits()

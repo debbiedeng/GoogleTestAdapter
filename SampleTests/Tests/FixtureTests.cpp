@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include "../LibProject/Lib.h"
 #include "gtest_wrapper.h"
 
 

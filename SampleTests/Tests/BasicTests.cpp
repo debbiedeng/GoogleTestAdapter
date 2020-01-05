@@ -1,7 +1,6 @@
 #include <windows.h>
 #include <string>
 #include "gtest/gtest.h"
-#include "../LibProject/Lib.h"
 #include "gtest_wrapper.h"
 
 extern std::string TEST_DIRECTORY;
@@ -40,26 +39,26 @@ TEST(WorkingDir, IsSolutionDirectory)
 	ASSERT_TRUE(ends_with(working_directory, "SampleTests")) << "working_directory is " << working_directory;
 }
 
-TEST(TestMath, AddFails)
-{
-	EXPECT_EQ(1000, Add(10, 10));
-}
-
-TEST(TestMath, AddPasses)
-{
-	EXPECT_EQ(20, Add(10, 10));
-}
-
-TEST(TestMath, Crash)
-{
-	int* pInt = NULL;
-	EXPECT_EQ(20, Add(*pInt, 10));
-}
-
-TEST_TRAITS(TestMath, AddPassesWithTraits, Type, Medium)
-{
-	EXPECT_EQ(20, Add(10, 10));
-}
+//TEST(TestMath, AddFails)
+//{
+//	EXPECT_EQ(1000, Add(10, 10));
+//}
+//
+//TEST(TestMath, AddPasses)
+//{
+//	EXPECT_EQ(20, Add(10, 10));
+//}
+//
+//TEST(TestMath, Crash)
+//{
+//	int* pInt = NULL;
+//	EXPECT_EQ(20, Add(*pInt, 10));
+//}
+//
+//TEST_TRAITS(TestMath, AddPassesWithTraits, Type, Medium)
+//{
+//	EXPECT_EQ(20, Add(10, 10));
+//}
 
 TEST_TRAITS(Traits, With8Traits, Trait1, Equals1, Trait2, Equals2, Trait3, Equals3, Trait4, Equals4, Trait5, Equals5, Trait6, Equals6, Trait7, Equals7, Trait8, Equals8)
 {

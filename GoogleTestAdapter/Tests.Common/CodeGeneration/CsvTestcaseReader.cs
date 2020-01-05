@@ -58,14 +58,14 @@ namespace GoogleTestAdapter.Tests.Common.CodeGeneration
             {
                 case "SampleTests":
                     return TestResources.Tests_DebugX86;
-                case "SampleTests170":
-                    return TestResources.Tests_DebugX86_Gtest170;
+                //case "SampleTests170":
+                //    return TestResources.Tests_DebugX86_Gtest170;
                 //case "SampleTestsX64":
                 //    return TestResources.Tests_ReleaseX64;
                 //case "LoadTests":
                 //    return TestResources.LoadTests_ReleaseX86;
-                case "HardCrashingSampleTests":
-                    return TestResources.CrashingTests_DebugX86;
+                //case "HardCrashingSampleTests":
+                //    return TestResources.CrashingTests_DebugX86;
                 default:
                     throw new Exception("Unknown test executable key: " + key);
             }

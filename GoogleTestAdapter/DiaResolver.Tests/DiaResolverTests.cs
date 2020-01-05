@@ -17,13 +17,13 @@ namespace GoogleTestAdapter.DiaResolver
     public class DiaResolverTests
     {
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void GetFunctions_SampleTests_TestFunctionsMatch_ResultSizeIsCorrect()
-        {
-            // also triggers destructor
-            DoResolveTest(TestResources.Tests_DebugX86, "*_GTA_TRAIT", 96, 0, false);
-        }
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void GetFunctions_SampleTests_TestFunctionsMatch_ResultSizeIsCorrect()
+        //{
+        //    // also triggers destructor
+        //    DoResolveTest(TestResources.Tests_DebugX86, "*_GTA_TRAIT", 96, 0, false);
+        //}
         
         //[TestMethod]
         //[TestCategory(Unit)]

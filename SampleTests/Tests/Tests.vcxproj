@@ -150,7 +150,6 @@
   <ItemGroup>
     <ClCompile Include="$(ProjectDir)..\3rdparty\gtest-1.8.1\fused-src\gtest\gtest-all.cc" />
     <ClCompile Include="ApiCreatedTests.cpp" />
-    <ClCompile Include="FixtureTests.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="BasicTests.cpp" />
     <ClCompile Include="MainMethodTest.cpp" />
@@ -163,11 +162,6 @@
   <ItemGroup>
     <ClInclude Include="gtest_wrapper.h" />
     <ClInclude Include="Main.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LibProject\LibProject.vcxproj">
-      <Project>{1f2c133f-b7bd-4446-a65c-3f7ef9a22ce0}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
