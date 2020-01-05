@@ -30,7 +30,7 @@ namespace GoogleTestAdapter
         [TestCategory(Unit)]
         public void VerifyExecutableTrust_TestsResources_AreVerified()
         {
-            VerifyExecutableIsTrusted(TestResources.SemaphoreExe);
+            //VerifyExecutableIsTrusted(TestResources.SemaphoreExe);
             //VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX86);
             VerifyExecutableIsTrusted(TestResources.Tests_DebugX86);
             //VerifyExecutableIsTrusted(TestResources.Tests_ReleaseX64);
@@ -41,8 +41,8 @@ namespace GoogleTestAdapter
             //VerifyExecutableIsTrusted(TestResources.CrashingTests_DebugX86);
             //VerifyExecutableIsTrusted(TestResources.CrashingTests_ReleaseX64);
             //VerifyExecutableIsTrusted(TestResources.CrashingTests_DebugX64);
-            VerifyExecutableIsTrusted(TestResources.AlwaysCrashingExe);
-            VerifyExecutableIsTrusted(TestResources.AlwaysFailingExe);
+            //VerifyExecutableIsTrusted(TestResources.AlwaysCrashingExe);
+            //VerifyExecutableIsTrusted(TestResources.AlwaysFailingExe);
         }
 
         private void VerifyExecutableIsTrusted(string executable)
@@ -110,25 +110,25 @@ namespace GoogleTestAdapter
         //    }
         //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void IsGoogleTestExecutable_DependingOnGtestDll_IsRecognizedAsTestExecutable()
-        {
-            bool result = GoogleTestDiscoverer
-                .IsGoogleTestExecutable(TestResources.FakeGtestDllExe, "", TestEnvironment.Logger);
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void IsGoogleTestExecutable_DependingOnGtestDll_IsRecognizedAsTestExecutable()
+        //{
+        //    bool result = GoogleTestDiscoverer
+        //        .IsGoogleTestExecutable(TestResources.FakeGtestDllExe, "", TestEnvironment.Logger);
 
-            result.Should().BeTrue();
-        }
+        //    result.Should().BeTrue();
+        //}
 
-        [TestMethod]
-        [TestCategory(Unit)]
-        public void IsGoogleTestExecutable_DependingOnGtestDllX64_IsRecognizedAsTestExecutable()
-        {
-            bool result = GoogleTestDiscoverer
-                .IsGoogleTestExecutable(TestResources.FakeGtestDllExeX64, "", TestEnvironment.Logger);
+        //[TestMethod]
+        //[TestCategory(Unit)]
+        //public void IsGoogleTestExecutable_DependingOnGtestDllX64_IsRecognizedAsTestExecutable()
+        //{
+        //    bool result = GoogleTestDiscoverer
+        //        .IsGoogleTestExecutable(TestResources.FakeGtestDllExeX64, "", TestEnvironment.Logger);
 
-            result.Should().BeTrue();
-        }
+        //    result.Should().BeTrue();
+        //}
 
         [TestMethod]
         [TestCategory(Unit)]
