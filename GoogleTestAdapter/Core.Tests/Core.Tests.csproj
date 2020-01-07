@@ -106,6 +106,7 @@
     <Compile Include="TestCases\TestCaseFactoryTests.cs" />
     <Compile Include="TestCases\ListTestsParserTests.cs" />
     <Compile Include="TestResults\ExitCodeTestsReporterTests.cs" />
+    <Compile Include="TestResults\HelloHtwTests.cs" />
     <Compile Include="TestResults\StreamingStandardOutputTestResultParserTests.cs" />
     <Compile Include="TestResults\ErrorMessageParserTests.cs" />
     <Compile Include="TestResults\ExitCodeTestsAggregatorTests.cs" />

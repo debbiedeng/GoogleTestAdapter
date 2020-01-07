@@ -39,6 +39,8 @@ namespace GoogleTestAdapter
 
         public void DiscoverTests(IEnumerable<string> executables, ITestFrameworkReporter reporter)
         {
+            _logger.LogInfo("Hello HTW!");
+
             var discoveryActions = executables
                 .Select(e => (Action)(() => DiscoverTests(e, reporter, _settings.Clone(), _logger, _diaResolverFactory, _processExecutorFactory)))
                 .ToArray();
